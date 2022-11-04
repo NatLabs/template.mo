@@ -1,12 +1,9 @@
-Filename: `[Section]/[Function].Test.mo`
-
 ```motoko
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
 
-import ActorSpec "../utils/ActorSpec";
-import Algo "../../src";
-// import [FnName] "../../src/[section]/[FnName]";
+import ActorSpec "./utils/ActorSpec";
+import Lib "../src";
 
 let {
     assertTrue; assertFalse; assertAllTrue; 
@@ -16,8 +13,10 @@ let {
 let success = run([
     describe(" (Function Name) ", [
         it("(test name)", do {
-            
-            // ...
+            // assertTrue(Lib.fnCall() == expectedResult)
+            // assertAllTrue([Lib.fnCall() == expectedResult, Lib.fn2() == res2])
+
+           assertTrue(true)
         }),
     ])
 ]);
