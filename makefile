@@ -3,4 +3,4 @@ test:
 
 doc:
 	$(shell vessel bin)/mo-doc
-	$(shell vessel bin)/mo-doc --fromat plain
+	$(shell vessel bin)/mo-doc --format plain
