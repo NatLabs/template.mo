@@ -1,7 +1,7 @@
 ## [New Motoko Library]
 
-### Tests
-- Uses [@krpeacock](https://github.com/krpeacock) [motoko-unit-tests](https://github.com/krpeacock/motoko-unit-tests) library
+### Dependencies
+- Uses [@krpeacock](https://github.com/krpeacock)'s [motoko-unit-tests](https://github.com/krpeacock/motoko-unit-tests) library in the [tests/utils](./tests/utils/ActorSpec.mo) directory
 
 ### Makefile Commands
 - `make test` - runs your motoko tests by interpreting the code with the motoko compiler
