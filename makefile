@@ -1,7 +1,7 @@
 .PHONY: test compile-tests docs no-warn
 
 test: 
-	$(shell vessel bin)/moc -r $(shell mops sources) -wasi-system-api ./tests/*Test.mo
+	$(shell vessel bin)/moc -r $(shell mops sources) -wasi-system-api ./tests/*.Test.mo
 
 compile-tests: 
 	bash compile-tests.sh $(file)
