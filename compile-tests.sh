@@ -11,20 +11,20 @@ else
     TESTS_FILES=`find tests -type f -name '*.Test.mo' | grep $1`
 fi
 
-mkdir -p tests/.wasm
-
 for TEST in $TESTS_FILES
 	do
-		FILE_NAME=`echo ${TEST:6} | awk -F'.' '{print $1}'`
-        printf "\n\n${FILE_NAME}.Test.mo ...\n"
+		FILE_PATH=`echo ${TEST:6} | awk -F'.' '{print $1}'`
+        printf "\n\n${FILE_PATH}.Test.mo ...\n"
         printf '=%.0s' {1..30}
         echo
 
-        WASM=tests/.wasm/$FILE_NAME.Test.wasm
-        SRC=src/$FILE_NAME
+        WASM=tests/.wasm/$FILE_PATH.Test.wasm
+        SRC=src/$FILE_PATH
         SRC_FILE=$SRC.mo
 
         IS_COMPILED=0
+
+        mkdir -p $(dirname $WASM)
         
         if [ $TEST -nt $WASM ];
         then 
