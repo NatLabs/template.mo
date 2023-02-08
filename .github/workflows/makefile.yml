@@ -24,7 +24,6 @@ jobs:
               run: |
                   npm --yes -g i ic-mops
                   mops i
-                  mops sources
             
             - name: install wasmtime
               run: |

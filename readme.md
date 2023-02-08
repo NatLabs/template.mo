@@ -1,7 +1,5 @@
 ## [New Motoko Library]
-
-### Dependencies
-- Uses [@krpeacock](https://github.com/krpeacock)'s [motoko-unit-tests](https://github.com/krpeacock/motoko-unit-tests) library in the [tests/utils](./tests/utils/ActorSpec.mo) directory
+This template is a version of [motoko-library-template](https://github.com/kritzcreek/motoko-library-template) that uses the [motoko-unit-tests](https://github.com/krpeacock/motoko-unit-tests) library in the [tests/utils](./tests/utils/ActorSpec.mo) directory
 
 ### Makefile Commands
 - `make test` 
