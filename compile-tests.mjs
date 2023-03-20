@@ -47,7 +47,7 @@ const wasm_path = (file) => {
 
 let test_files = await glob("./test?(s)/**/*.(test|Test).mo");
 
-let moc = (await $`dfx cache show`).stdout.toString().trim() + "/moc";
+let moc = (await $`vessel bin`).stdout.toString().trim() + "/moc";
 let mops_sources = (await $`mops sources`).stdout.toString().split("\n");
 
 let packages = {};
@@ -79,12 +79,21 @@ const is_recently_modified = (file, time) => {
     }
 
     let file_mtime = statSync(file).mtimeMs;
+    console.log(file, file_mtime);
     last_modified_cache[file] = file_mtime;
 
     return file_mtime > time;
 };
 
-const is_dep_tree_recently_modified = async (file, wasm_mtime, visited) => {
+const is_mo_module = (imp_path) => {
+    if (existsSync(imp_path.concat(".mo"))) {
+        imp_path = imp_path.concat(".mo");
+    } else {
+        imp_path = imp_path.concat("/lib.mo");
+    }
+}
+
+const is_dep_tree_recently_modified = async (file, wasm_mtime, visited, check_imported_pkgs = false) => {
     let modified = is_recently_modified(file, wasm_mtime);
 
     if (modified) {
@@ -96,21 +105,21 @@ const is_dep_tree_recently_modified = async (file, wasm_mtime, visited) => {
     // console.log({file, imports})
 
     for (let imp_path of imports) {
+        
         if (imp_path.startsWith("mo:")) {
-            let pkg = imp_path.slice(3).split("/")[0];
-            let pkg_path = packages[pkg];
+            let segments = imp_path.slice(3).split("/");
+            let pkg_name = segments[0];
+            let pkg_path = segments.slice(1).join("/");
 
-            pkg_path = (await glob(pkg_path + "/**/*.mo"))[0];
+            let pkg_src = packages[pkg_name];
 
-            if (pkg_path && !visited.has(pkg_path)) {
-                visited.add(pkg_path);
-                modified = is_recently_modified(pkg_path, wasm_mtime);
-            }
+            if (!pkg_src) continue;
+            
+            imp_path = path.resolve(pkg_src, pkg_path);
 
-            continue;
+        }else {
+            imp_path = path.resolve(path.dirname(file), imp_path);
         }
-
-        imp_path = path.resolve(path.dirname(file), imp_path);
 
         if (existsSync(imp_path.concat(".mo"))) {
             imp_path = imp_path.concat(".mo");
