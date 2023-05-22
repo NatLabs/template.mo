@@ -79,7 +79,6 @@ const is_recently_modified = (file, time) => {
     }
 
     let file_mtime = statSync(file).mtimeMs;
-    console.log(file, file_mtime);
     last_modified_cache[file] = file_mtime;
 
     return file_mtime > time;
