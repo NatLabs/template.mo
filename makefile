@@ -11,5 +11,5 @@ docs:
 	$(MocvPath)/mo-doc
 	$(MocvPath)/mo-doc --format plain
 
-bench: set-dfx-moc-path
+bench:
 	mops bench  --gc incremental%
