@@ -1,15 +1,16 @@
 .PHONY: test bench docs check
 
+MocPath = $(shell mops toolchain bin moc)
+
 test:
 	mops test
 
 check:
-	find src -type f -name '*.mo' -print0 | \
-	xargs -0 $(shell mops toolchain bin moc) -r $(shell mops sources) -Werror -wasi-system-api
+	find src -type f -name '*.mo' -print0 | xargs -0 $(MocPath) -r $(shell mops sources) -Werror -wasi-system-api
 
 docs:
-	$(MocvPath)/mo-doc
-	$(MocvPath)/mo-doc --format plain
+	$(shell dfx cache show)/mo-doc
+	$(shell dfx cache show)/mo-doc --format plain
 
 bench:
-	mops bench  --gc incremental%
+	mops bench
