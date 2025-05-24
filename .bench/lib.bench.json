@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "moc": "0.14.11",
+  "replica": "dfx",
+  "replicaVersion": "0.26.1",
+  "gc": "incremental",
+  "forceGc": true,
+  "results": [
+    [
+      "Lib:greet()",
+      {
+        "rts_stable_memory_size": 0,
+        "stable_memory_size": 0,
+        "instructions": 4646555655,
+        "rts_memory_size": 67108864,
+        "rts_total_allocation": 86930124,
+        "rts_collector_instructions": 2021182,
+        "rts_mutator_instructions": -13683,
+        "rts_logical_stable_memory_size": 0,
+        "rts_heap_size": 21970952,
+        "rts_reclaimed": 64959172
+      }
+    ]
+  ]
+}
