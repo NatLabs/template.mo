@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "moc": "0.14.11",
+  "moc": "0.14.13",
   "replica": "dfx",
-  "replicaVersion": "0.26.1",
+  "replicaVersion": "0.28.0",
   "gc": "incremental",
   "forceGc": true,
   "results": [
@@ -11,14 +11,14 @@
       {
         "rts_stable_memory_size": 0,
         "stable_memory_size": 0,
-        "instructions": 4646555655,
+        "instructions": 4074523476,
         "rts_memory_size": 67108864,
-        "rts_total_allocation": 86930124,
-        "rts_collector_instructions": 2021182,
-        "rts_mutator_instructions": -13683,
+        "rts_total_allocation": 86570124,
+        "rts_collector_instructions": 2440789,
+        "rts_mutator_instructions": -13063,
         "rts_logical_stable_memory_size": 0,
-        "rts_heap_size": 21970952,
-        "rts_reclaimed": 64959172
+        "rts_heap_size": 21613376,
+        "rts_reclaimed": 64956748
       }
     ]
   ]
